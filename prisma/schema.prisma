@@ -7,19 +7,9 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model User {
-    id    String  @id @default(cuid())
-    email String  @unique
-    name  String?
-    posts Post[]
-}
-
-model Post {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    title     String
-    content   String?
-    author    User?    @relation(fields: [authorId], references: [id])
-    authorId  String?
+model Promocode {
+    id           String @id @default(cuid())
+    name         String @unique()
+    advantage    Int
+    restrictions String
 }
