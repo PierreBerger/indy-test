@@ -69,4 +69,85 @@ values:
 # Port number
 PORT=3000
 DATABASE_URL="./data.db"
+OPENWEATHERMAP_APIKEY="XXXX"
 ```
+
+### Requests example
+
+<details>
+  <summary>Create promocode</summary>
+  
+  ```bash
+    ## Create promocode
+    curl -X "POST" "http://localhost:3000/promocodes" \
+        -H 'Content-Type: application/json; charset=utf-8' \
+        -d $'{
+    "promocode_name": "mycode",
+    "restrictions": [
+        {
+        "@age": {
+            "gt": 20,
+            "lt": 50
+        }
+        },
+        {
+        "@and": [
+            {
+            "@date": {
+                "after": "2020-12-31",
+                "before": "2029-01-01"
+            }
+            },
+            {
+            "@age": {
+                "gt": 0,
+                "lt": 100
+            }
+            }
+        ]
+        }
+    ],
+    "advantage": {
+        "percent": 30
+    }
+    }'
+```
+
+</details>
+
+<details>
+  <summary>Validate promocode</summary>
+
+```bash
+## Validate mycode
+curl -X "POST" "http://localhost:3000/promocodes/validate" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
+  "promocode_name": "mycode",
+  "arguments": {
+    "age": 25
+  }
+}'
+```
+
+</details>
+
+<details>
+  <summary>Validate promocode with weather (denied)</summary>
+
+```bash
+## Validate FEB80
+curl -X "POST" "http://localhost:3000/promocodes/validate" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
+  "promocode_name": "FEB80",
+  "arguments": {
+    "age": 40,
+    "meteo": {
+      "town": "Dakar"
+    }
+  }
+}'
+```
+
+</details>

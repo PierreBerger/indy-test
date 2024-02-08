@@ -16,5 +16,52 @@
         ]
       }
     ]
+  },
+  {
+    "name": "FEB80",
+    "avantage": { "percent": 80 },
+    "restrictions": [
+      { "@date": { "after": "2024-02-01", "before": "2024-03-01" } },
+      {
+        "@or": [
+          { "@age": { "eq": 40 } },
+          {
+            "@and": [
+              { "@age": { "lt": 100, "gt": 10 } },
+              { "@meteo": { "is": "clear", "temp": { "gt": "15" } } }
+            ]
+          }
+        ]
+      },
+      {
+        "@or": [
+          { "@age": { "eq": 35 } },
+          {
+            "@or": [
+              { "@meteo": { "is": "dust", "temp": { "lt": "40" } } },
+              { "@meteo": { "is": "clouds", "temp": { "gt": "10" } } }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "indy",
+    "avantage": { "percent": 50 },
+    "restrictions": [
+      { "@date": { "after": "2024-02-01", "before": "2024-03-01" } },
+      {
+        "@or": [
+          { "@age": { "eq": 40 } },
+          {
+            "@or": [
+              { "@age": { "lt": 100, "gt": 10 } },
+              { "@meteo": { "is": "clear", "temp": { "gt": "15" } } }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
