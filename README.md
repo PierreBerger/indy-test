@@ -1,6 +1,6 @@
-# 🚀 Fastify-starter
+# 🚀 Indy tech test
 
-Fastify starter template with Typescript, Prisma and Vitest
+Indy test tech using fastifty-starter template with Typescript, Prisma and Vitest
 
 ### Requirements
 
@@ -155,9 +155,10 @@ curl -X "POST" "http://localhost:3000/promocodes/validate" \
 ### Improvements ?
 
 - Add integration tests
-- Use a no SQL database
+- Use a NoSQL database
 - Improve errors messages
-- Improve use cases
+- Improve engine-rules or use an existant one
 - Improve unit tests (Using random values)
 - Improve robustness of openweather.ts file
-- Add swagger and improve documentation
+- Implement Swagger and enhance documentation
+- Use [ts-pattern](https://github.com/gvergnaud/ts-pattern)
