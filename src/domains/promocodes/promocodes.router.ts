@@ -3,12 +3,17 @@ import type { ZodTypeProvider } from 'fastify-type-provider-zod'
 import {
   createPromocodeResponseSchema,
   createPromocodeSchema,
+  validatePromocodeAcceptedResponseSchema,
+  validatePromocodeDeniedResponseSchema,
+  validatePromocodeRequestSchema,
 } from './promocodes.schema'
 import { createPromocodeHandler } from './promocodes.handler'
 
+const baseUrl = 'promocodes'
+
 const promocodes: FastifyPluginAsync = async (fastify, _opts) => {
   fastify.withTypeProvider<ZodTypeProvider>().post(
-    `promocodes`,
+    `${baseUrl}`,
     {
       schema: {
         body: createPromocodeSchema,
@@ -18,6 +23,20 @@ const promocodes: FastifyPluginAsync = async (fastify, _opts) => {
       },
     },
     createPromocodeHandler,
+  )
+
+  fastify.withTypeProvider<ZodTypeProvider>().post(
+    `${baseUrl}/validate`,
+    {
+      schema: {
+        body: validatePromocodeRequestSchema,
+        response: {
+          200: validatePromocodeAcceptedResponseSchema,
+          403: validatePromocodeDeniedResponseSchema,
+        },
+      },
+    },
+    validatePromocodeHandler,
   )
 }
 

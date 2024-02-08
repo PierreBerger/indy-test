@@ -89,3 +89,32 @@ export const createPromocodeResponseSchema = z.object({
   ...basePromocodeSchema,
   restrictions: z.array(restriction),
 })
+
+export type ValidatePromocodeRequestSchema = z.infer<
+  typeof validatePromocodeRequestSchema
+>
+export const validatePromocodeRequestSchema = z.object({
+  promocode_name: z.string(),
+  arguments: z.object({
+    age: z.number().optional(),
+    meteo: z
+      .object({
+        town: z.string(),
+      })
+      .optional(),
+  }),
+})
+
+export const validatePromocodeAcceptedResponseSchema = z.object({
+  promocode_name: z.string(),
+  status: z.literal('accepted'),
+  advantage: z.object({
+    percent: z.number(),
+  }),
+})
+
+export const validatePromocodeDeniedResponseSchema = z.object({
+  promocode_name: z.string(),
+  status: z.literal('denied'),
+  reasons: z.array(z.string()),
+})
