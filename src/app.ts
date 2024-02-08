@@ -1,10 +1,7 @@
 import * as path from 'path'
 import AutoLoad from '@fastify/autoload'
 import { type FastifyPluginAsync } from 'fastify'
-import {
-  serializerCompiler,
-  validatorCompiler,
-} from 'fastify-type-provider-zod'
+import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod'
 
 const app: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.register(AutoLoad, {

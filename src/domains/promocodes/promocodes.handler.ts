@@ -1,9 +1,7 @@
 import type { FastifyReply, FastifyRequest } from 'fastify'
-import type {
-  CreatePromocodeSchema,
-  ValidatePromocodeRequestSchema,
-} from './promocodes.schema'
+import type { CreatePromocodeSchema, ValidatePromocodeRequestSchema } from './promocodes.schema'
 import { createPromocode, findPromocodeByName } from './promocodes.db'
+import { validatePromocode } from './validators/validatePromocode'
 
 export const createPromocodeHandler = async (
   req: FastifyRequest<{ Body: CreatePromocodeSchema }>,
@@ -25,10 +23,7 @@ export const validatePromocodeHandler = async (
 ) => {
   const { promocode_name, arguments: args } = req.body
 
-  const maybePromocode = await findPromocodeByName(
-    req.server.prisma,
-    promocode_name,
-  )
+  const maybePromocode = await findPromocodeByName(req.server.prisma, promocode_name)
 
   if (!maybePromocode) {
     return reply.code(404).send({ message: 'Promocode not found' })

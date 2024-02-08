@@ -28,9 +28,8 @@ cp .env.example .env
 
 #### 3. Create and seed the database
 
-Run the following command to create your SQLite database file. This also creates
-the `User` and `Post` tables that are defined in
-[`prisma/schema.prisma`](./prisma/schema.prisma):
+Run the following command to create your SQLite database file. This also creates the `User` and
+`Post` tables that are defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
 
 ```shell
 bun prisma migrate dev --name init
@@ -44,8 +43,8 @@ Launch your Fastify server in development mode with live reload:
 bun run dev
 ```
 
-Navigate to [http://localhost:3000/](http://localhost:3000/) in your favorite
-browser to explore the API of your Fastify server.
+Navigate to [http://localhost:3000/](http://localhost:3000/) in your favorite browser to explore the
+API of your Fastify server.
 
 ### Commands
 
@@ -63,8 +62,8 @@ All commands are run from the root of the project, from a terminal:
 
 ### Environment Variables
 
-The environment variables can be found and modified in the `.env` file. They
-come with these default values:
+The environment variables can be found and modified in the `.env` file. They come with these default
+values:
 
 ```bash
 # Port number

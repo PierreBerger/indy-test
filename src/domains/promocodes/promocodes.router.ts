@@ -7,7 +7,7 @@ import {
   validatePromocodeDeniedResponseSchema,
   validatePromocodeRequestSchema,
 } from './promocodes.schema'
-import { createPromocodeHandler } from './promocodes.handler'
+import { createPromocodeHandler, validatePromocodeHandler } from './promocodes.handler'
 
 const baseUrl = 'promocodes'
 
