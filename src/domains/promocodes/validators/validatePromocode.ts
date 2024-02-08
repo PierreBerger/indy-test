@@ -1,3 +1,4 @@
+import type { DeniedPromocodeMessage } from '../../../utils/types/errors'
 import {
   isAge,
   type CreatePromocodeSchema,
@@ -15,7 +16,7 @@ import { validateWeatherRestriction } from './validateWeatherRestriction'
 
 export type ValidateCodeResult = {
   isValid: boolean
-  reasons?: unknown[]
+  reasons?: DeniedPromocodeMessage[]
 }
 
 export const validatePromocode = async (
