@@ -3,7 +3,7 @@
     "name": "WeatherCode",
     "avantage": { "percent": 20 },
     "restrictions": [
-      { "@date": { "after": "2019-01-01", "before": "2020-06-30" } },
+      { "@date": { "after": "2020-01-01", "before": "2024-06-30" } },
       {
         "@or": [
           { "@age": { "eq": 40 } },

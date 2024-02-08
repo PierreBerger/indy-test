@@ -1,7 +1,9 @@
-import type { Prisma } from '@prisma/client'
+import { PrismaClient, type Prisma } from '@prisma/client'
 import { cleanupDb } from '../test/utils/db.util'
-import prisma from '../src/libs/prisma'
+
 import data from './data.json'
+
+const prisma = new PrismaClient()
 
 const rawPromocodes: RawPromocode[] = data satisfies RawPromocode[]
 
@@ -13,13 +15,11 @@ interface RawPromocode {
   restrictions: unknown
 }
 
-const promoCodes: Prisma.PromocodeCreateInput[] = rawPromocodes.map(
-  promocode => ({
-    name: promocode.name,
-    advantage: promocode.avantage.percent,
-    restrictions: JSON.stringify(promocode.restrictions),
-  }),
-)
+const promoCodes: Prisma.PromocodeCreateInput[] = rawPromocodes.map(promocode => ({
+  name: promocode.name,
+  advantage: promocode.avantage.percent,
+  restrictions: JSON.stringify(promocode.restrictions),
+}))
 
 async function seed() {
   console.log('🌱 Seeding...')
