@@ -4,7 +4,7 @@ Fastify starter template with Typescript, Prisma and Vitest
 
 ### Requirements
 
-- Node.js and [bun](https://bun.sh) (or npm, yarn, pnpm)
+- Node.js and [bun](https://bun.sh)
 
 ### Getting started
 
@@ -13,8 +13,8 @@ Fastify starter template with Typescript, Prisma and Vitest
 Run the following command on your local environment:
 
 ```shell
-git clone --depth=1 https://github.com/pierreberger/fastify-starter.git my-project-name
-cd my-project-name
+git clone --depth=1 https://github.com/pierreberger/indy-test.git pierreberger-indy-test
+cd pierreberger-indy-test
 bun install
 ```
 
@@ -151,3 +151,12 @@ curl -X "POST" "http://localhost:3000/promocodes/validate" \
 ```
 
 </details>
+
+### Improvements ?
+
+- Add integration tests
+- Use a no SQL database
+- Improve errors messages
+- Improve use cases
+- Improve unit tests (Using random values)
+- Improve robustness of openweather.ts file
