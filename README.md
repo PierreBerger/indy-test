@@ -13,7 +13,7 @@ Fastify starter template with Typescript, Prisma and Vitest
 Run the following command on your local environment:
 
 ```shell
-git clone --depth=1 https://github.com/pierreberger/indy-test.git pierreberger-indy-test
+git clone --depth=1 git@github.com:PierreBerger/indy-test.git pierreberger-indy-test
 cd pierreberger-indy-test
 bun install
 ```
@@ -160,3 +160,4 @@ curl -X "POST" "http://localhost:3000/promocodes/validate" \
 - Improve use cases
 - Improve unit tests (Using random values)
 - Improve robustness of openweather.ts file
+- Add swagger and improve documentation
