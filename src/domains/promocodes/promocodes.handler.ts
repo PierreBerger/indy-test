@@ -7,14 +7,25 @@ export const createPromocodeHandler = async (
   req: FastifyRequest<{ Body: CreatePromocodeSchema }>,
   reply: FastifyReply,
 ) => {
-  const promocode = await createPromocode(req.server.prisma, req.body)
-  const response = {
-    id: promocode.id,
-    promocode_name: promocode.name,
-    advantage: { percent: promocode.advantage },
-    restrictions: JSON.parse(promocode.restrictions),
+  try {
+    const promocode = await createPromocode(req.server.prisma, req.body)
+
+    const response = {
+      id: promocode.id,
+      promocode_name: promocode.name,
+      advantage: { percent: promocode.advantage },
+      restrictions: JSON.parse(promocode.restrictions),
+    }
+    reply.code(201).send(response)
+  } catch (error) {
+    const prismaError = error as { code?: string; meta: { target: string[] } }
+
+    if (prismaError.code === 'P2002' && prismaError.meta.target.includes('name')) {
+      return reply.code(409).send({ message: 'promocode name already used' })
+    }
+
+    return reply.code(500).send()
   }
-  reply.code(201).send(response)
 }
 
 export const validatePromocodeHandler = async (
